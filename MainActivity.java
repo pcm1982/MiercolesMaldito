@@ -12,12 +12,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final int REQUEST_CODE_A = 10;
     public static final int REQUEST_CODE_B = 20;
+    public static final int REQUEST_CODE_X = 30;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.buttonA).setOnClickListener(this);
         findViewById(R.id.buttonB).setOnClickListener(this);
+        findViewById(R.id.buttonX).setOnClickListener(this);
     }
 
 
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonB:
                 intent = new Intent(MainActivity.this, B_Activity.class);
                 requestCode = MainActivity.REQUEST_CODE_B;
+                break;
+            case R.id.buttonX:
+                intent = new Intent(MainActivity.this, X_Activity.class);
+                requestCode = MainActivity.REQUEST_CODE_X;
                 break;
         }
 
@@ -54,11 +60,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case MainActivity.REQUEST_CODE_B:
 
                 if(resultCode==RESULT_OK) {
-                    toast = Toast.makeText(this, "respuesta OK de B" +data, Toast.LENGTH_LONG);
+                    toast = Toast.makeText(this, "respuesta OK de B", Toast.LENGTH_LONG);
                 }else if (resultCode==RESULT_CANCELED){
-                    toast = Toast.makeText(this, "respuesta cancel de B"+data, Toast.LENGTH_LONG);
+                    toast = Toast.makeText(this, "respuesta cancel de B", Toast.LENGTH_LONG);
                 }
                 break;
+            case MainActivity.REQUEST_CODE_X:
+                break;
+
+
         }
         if(toast != null){
             toast.show();
